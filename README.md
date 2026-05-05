@@ -172,4 +172,4 @@ Tento projekt je vytvorený v rámci diplomovej práce. Všetky práva vyhraden�
 
 ## Autor
 
-**Alexander [Priezvisko]** – diplomová práca, [Univerzita / Fakulta], 2026
+**Alexander Miloslav Kováč** – diplomová práca, Žilinská univerzita v Žiline, 2026
