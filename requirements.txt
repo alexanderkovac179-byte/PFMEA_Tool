@@ -1,14 +1,9 @@
-# AI / OpenAI
-openai>=1.30.0
-python-dotenv>=1.0.0
-
-# Načítanie dokumentov
-pypdf>=4.0.0
-python-docx>=1.1.0
-
-# Excel export
+anthropic>=0.40.0
+customtkinter>=5.2.2
 openpyxl>=3.1.0
 pandas>=2.0.0
-
-# UI – drag & drop (voliteľné)
-tkinterdnd2>=0.3.0
+pypdf>=4.0.0
+python-docx>=1.1.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+Pillow>=10.0.0

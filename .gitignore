@@ -1,51 +1,61 @@
-# Python
+# ── Citlivé údaje – NIKDY necommitovať! ──────────────────────────────────────
+.env
+.env.local
+*.key
+secrets/
+
+# ── Python ───────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
+*$py.class
+*.so
 .Python
-*.egg-info/
-dist/
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
 *.egg
+MANIFEST
 
-# Virtuálne prostredie
-.venv/
+# ── Virtuálne prostredia ─────────────────────────────────────────────────────
 venv/
 env/
+ENV/
+.venv/
+.env/
 
-# API kľúče – NIKDY nezverejňovať!
-.env
-*.env
+# ── IDE ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
 
-# Dáta – vstupné dokumenty a výstupy nepatria do repozitára
-data/raw/
-data/output/
-data/logs/
-data/tmp_input/
-data/.ui_history.json
-
-# Výnimka – zachovaj štruktúru priečinkov
+# ── Dáta a výstupy aplikácie ─────────────────────────────────────────────────
+data/raw/*
+data/output/*
+data/logs/*
 !data/raw/.gitkeep
 !data/output/.gitkeep
 !data/logs/.gitkeep
 
-# Excel výstupy
-*.xlsx
+# ── User data ────────────────────────────────────────────────────────────────
+user_state.json
+*.log
 
-# IDE
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-
-# macOS
-.DS_Store
-
-# Windows
-Thumbs.db
-desktop.ini
-
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb
+# ── Office / temp ────────────────────────────────────────────────────────────
+~$*
+*.tmp
+*.bak
+.~lock.*

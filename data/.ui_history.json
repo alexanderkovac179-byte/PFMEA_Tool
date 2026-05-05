@@ -1,0 +1,53 @@
+{
+  "input_dirs": [],
+  "output_dir": "C:/Users/alexa/OneDrive/Počítač/vystupne_udaje",
+  "runs": [
+    {
+      "timestamp": "2026-05-03T12:59:21",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 42,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-03_12-59-21_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 199.7,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-04-29T13:00:04",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 38,
+      "document_count": 1,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-04.xlsx",
+      "log_file": "data\\logs\\log_2026-04-29_13-00-04_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 111.0,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-04-29T12:50:56",
+      "process_name": "Montáž hriadeľového pohonu brány",
+      "item_count": 42,
+      "document_count": 1,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_brany_2026-04.xlsx",
+      "log_file": "data\\logs\\log_2026-04-29_12-50-55_montaz_hriadeloveho_pohonu_brany.md",
+      "duration_sec": 203.2,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-04-29T00:20:44",
+      "process_name": "Submontáž vačkového hriadeľa",
+      "item_count": 18,
+      "document_count": 1,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_submontaz_vackoveho_hriadela_2026-04.xlsx",
+      "log_file": "data\\logs\\log_2026-04-29_00-20-44_submontaz_vackoveho_hriadela.md",
+      "duration_sec": 54.6,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    }
+  ],
+  "theme": "dark",
+  "model": "claude-opus-4-7",
+  "parallel_steps": 4
+}

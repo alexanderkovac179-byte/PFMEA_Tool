@@ -1,164 +1,175 @@
-# FMEA Studio – AI-assisted procesná FMEA
+# PFMEA Tool
 
-> Diplomová práca | Automatizovaná tvorba procesnej FMEA pomocou umelej inteligencie
+**Desktopová aplikácia pre AI-asistované generovanie procesnej FMEA (Failure Mode and Effects Analysis) z technických dokumentov.**
 
-FMEA Studio je desktopová aplikácia, ktorá automaticky generuje návrh **procesnej FMEA** (Failure Mode and Effects Analysis) z PDF a DOCX dokumentov. Výstupom je formátovaný Excel súbor podľa štandardu AIAG/VDA.
+Aplikácia automaticky analyzuje vstupné dokumenty (PDF, DOCX, XLSX, TXT, MD) a pomocou modelu Claude Opus 4.7 vygeneruje návrh procesnej FMEA podľa metodiky **AIAG/VDA 2019** a normy **IEC 60812:2018**. Výstupom je formátovaný Excel súbor s hodnotami S, O, D, RPN a klasifikáciou špeciálnych charakteristík (CC, OS, SC, HI).
 
----
+> **Poznámka:** PFMEA Tool je AI-asistovaný nástroj na podporu tvorby FMEA dokumentácie. Výstup nie je finálnym auditovateľným záznamom a nenahrádza odbornú expertízu inžinierov kvality.
 
-## Ukážka
-
-![FMEA Studio UI](docs/screenshot.png)
+Diplomová práca, 2026.
 
 ---
 
-## Ako to funguje
+## Hlavné vlastnosti
+
+- **AI generuje len text** (chyby, príčiny, opatrenia), zatiaľ čo S/O/D/RPN sa počítajú deterministickými pravidlami v Pythone, čo zaručuje **reprodukovateľnosť** podľa IEC 60812:2018
+- Podpora vstupných formátov: **PDF, DOCX, XLSX, TXT, MD**
+- **Paralelné spracovanie** krokov procesu cez ThreadPoolExecutor
+- **Confidence skóre** pre každú FMEA položku s farebným vyznačením v Exceli
+- **Klasifikácia špeciálnych charakteristík** CC / OS / SC / HI podľa AIAG/VDA 2019
+- **Indikátor kvality vstupných dokumentov** (skóre 0–100 s odporúčaniami)
+- **Cenový odhad** pred spustením analýzy (USD aj EUR)
+- **Voliteľné generovanie 5 listov legiend** v Exceli s odkazmi na IEC 60812:2018
+- Tmavý režim UI cez **CustomTkinter**
+- História predchádzajúcich behov, manuálne ukladanie nastavení
+
+---
+
+## Architektúra
 
 ```
-Vstupné dokumenty (PDF/DOCX)
-        ↓
-  Extrakcia textu
-        ↓
-  AI – identifikácia krokov procesu
-        ↓
-  AI – generovanie FMEA položiek pre každý krok
-        ↓
-  Deterministický výpočet S / O / D / RPN
-        ↓
-  Klasifikácia CC / SC (AIAG/VDA)
-        ↓
-  Validácia a deduplikácia
-        ↓
-  Export do Excelu (.xlsx)
+┌─────────────┐    ┌──────────────┐
+│   ui.py     │    │   main.py    │
+│ (GUI)       │    │ (CLI)        │
+└──────┬──────┘    └──────┬───────┘
+       │                  │
+       └────────┬─────────┘
+                ▼
+       ┌────────────────┐
+       │ preflight_     │  ← cena + kvalita + voľba legiend
+       │ dialog.py      │
+       └────────┬───────┘
+                ▼
+       ┌────────────────┐
+       │  pipeline.py   │  ← orchestrácia
+       └────────┬───────┘
+                ▼
+  loaders → generator → validator → scoring → exporter
+                │
+                ▼
+        Claude Opus 4.7 API
 ```
 
----
+### Moduly
 
-## Požiadavky
-
-- Python 3.10+
-- OpenAI API kľúč (model `gpt-5.4`)
-- Windows (UI využíva `os.startfile`)
+| Modul                 | Účel                                                                   |
+| --------------------- | ---------------------------------------------------------------------- |
+| `ui.py`               | Hlavné GUI v CustomTkinter                                             |
+| `preflight_dialog.py` | Modálny dialóg pred spustením (cena, kvalita, voľba legiend)           |
+| `pipeline.py`         | Orchestrácia celého toku spracovania                                   |
+| `loaders.py`          | Načítavanie vstupných dokumentov (PDF, DOCX, XLSX, TXT)                |
+| `generator.py`        | Anthropic API volania (názov procesu, kroky, FMEA položky)             |
+| `validator.py`        | Validácia a deduplikácia AI výstupu                                    |
+| `scoring.py`          | Deterministický výpočet S, O, D, RPN a klasifikácie                    |
+| `exporter.py`         | Export do formátovaného Excelu s 5 legendami                           |
+| `cost_estimator.py`   | Odhad ceny a analýza kvality vstupných dokumentov                      |
+| `legends.py`          | Definície legiend pre Excel (Význam, Výskyt, Odhalenie, Klasifikácia)  |
+| `models.py`           | Pydantic modely pre typovú validáciu                                   |
+| `config.py`           | Centralizovaná konfigurácia                                            |
+| `logging_utils.py`    | Markdown audit logy každého behu                                       |
 
 ---
 
 ## Inštalácia
 
-```bash
-# 1. Klonovanie repozitára
-git clone https://github.com/TVOJE_MENO/fmea-studio.git
-cd fmea-studio
+### Požiadavky
 
-# 2. Vytvorenie virtuálneho prostredia
-python -m venv .venv
-.venv\Scripts\activate       # Windows
-# source .venv/bin/activate  # Linux/macOS
+- Python 3.10+
+- API kľúč Anthropic (https://console.anthropic.com)
+- Operačný systém: Windows / macOS / Linux
 
-# 3. Inštalácia závislostí
-pip install -r requirements.txt
+### Postup
 
-# 4. Drag & drop podpora (voliteľné)
-pip install tkinterdnd2
+1. **Naklonuj repozitár:**
 
-# 5. Nastavenie API kľúča
-cp .env.example .env
-# Otvor .env a doplň svoj OPENAI_API_KEY
-```
+   ```bash
+   git clone https://github.com/<tvoj-username>/pfmea-tool.git
+   cd pfmea-tool
+   ```
 
----
+2. **Vytvor virtuálne prostredie:**
 
-## Spustenie
+   ```bash
+   python -m venv venv
+   ```
 
-```bash
-# Grafické rozhranie
-python -m app.ui
+   Aktivuj ho:
+   - **Windows:** `venv\Scripts\activate`
+   - **macOS/Linux:** `source venv/bin/activate`
 
-# Príkazový riadok
-python -m app.main
-```
+3. **Nainštaluj knižnice:**
 
----
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Štruktúra projektu
+4. **Vytvor `.env` súbor v root priečinku** podľa vzoru `.env.example`:
 
-```
-fmea-studio/
-├── app/
-│   ├── config.py          # Konfigurácia (model, limity, metadáta)
-│   ├── ui.py              # Grafické rozhranie (Tkinter + drag & drop)
-│   ├── pipeline.py        # Orchestrácia celého procesu
-│   ├── generator.py       # AI volania – extrakcia krokov a FMEA
-│   ├── scoring.py         # Deterministický výpočet S/O/D/RPN + klasifikácia CC/SC
-│   ├── validator.py       # Validácia a deduplikácia položiek
-│   ├── exporter.py        # Export do formátovaného Excelu
-│   ├── loaders.py         # Načítanie PDF, DOCX, TXT
-│   ├── legends.py         # Legenda hodnôt S/O/D (AIAG/VDA)
-│   ├── logging_utils.py   # Logovanie behov do Markdown súboru
-│   └── main.py            # CLI vstupný bod
-├── data/
-│   ├── raw/               # Sem vlož vstupné dokumenty
-│   ├── output/            # Sem sa uloží vygenerovaný Excel
-│   └── logs/              # Logy jednotlivých behov
-├── .env.example           # Šablóna pre API kľúč
-├── requirements.txt
-└── README.md
-```
+   ```env
+   ANTHROPIC_API_KEY=sk-ant-api03-...
+   CLAUDE_MODEL=claude-opus-4-7
+   ```
+
+5. **Spusti aplikáciu:**
+
+   ```bash
+   python -m app.ui
+   ```
+
+   alebo cez CLI:
+
+   ```bash
+   python -m app.main
+   ```
 
 ---
 
-## Konfigurácia
+## Použitie
 
-Hlavné nastavenia sú v `app/config.py`:
+1. **Pridaj vstupné dokumenty** (drag-and-drop alebo kliknutím na "Pridať súbory")
+2. **Klikni na "Spustiť analýzu"** – otvorí sa preflight dialog
+3. **V preflight dialógu** skontroluj:
+   - Skóre kvality vstupných dokumentov (0–100)
+   - Odhad ceny analýzy v USD a EUR
+   - Voľbu generovania legiend v Exceli
+4. **Klikni na "Spustiť analýzu"** v dialógu – pipeline beží paralelne
+5. **Po dokončení** sa otvorí možnosť otvoriť vygenerovaný Excel
 
-| Premenná | Popis | Predvolená hodnota |
-|---|---|---|
-| `OPENAI_MODEL` | Model OpenAI | `gpt-5.4` |
-| `OPENAI_TEMPERATURE` | Teplota generovania | `0.2` |
-| `MAX_FMEA_ITEMS_PER_STEP` | Max FMEA riadkov na krok | `3` |
-| `STEP_EXTRACTION_MAX_CHARS` | Max znakov pre extrakciu krokov | `16 000` |
+### Vhodné vstupné dokumenty
 
----
-
-## Výstup – Excel
-
-Vygenerovaný Excel obsahuje:
-- **Hlavičku** s metadátami procesu (názov, dátum, revízia)
-- **FMEA tabuľku** s hodnotami S/O/D, RPN a klasifikáciou CC/SC
-- **Podmienené formátovanie** RPN (červená ≥ 200, žltá ≥ 100, zelená < 100)
-- **3 listy legiend** pre S, O, D hodnoty podľa AIAG/VDA
-
----
-
-## Odporúčané vstupné dokumenty
-
-Pre najlepšie výsledky použite:
-- Pracovné postupy / Work Instructions
-- Kontrolné plány
-- Procesné toky / Flow Charts
-- Záznamy o nezhodách
+- Pracovné postupy a inštrukcie (Work Instructions)
+- Kontrolné plány (Control Plans)
+- Procesné toky (Process Flow Charts)
+- Záznamy o nezhodách (NCR, 8D)
+- Existujúce FMEA z podobných procesov
+- Plány údržby a kalibrácie
 
 ---
 
 ## Technológie
 
-| Vrstva | Technológia |
-|---|---|
-| AI generovanie | OpenAI Responses API (`gpt-5.4`) |
-| UI | Python Tkinter + tkinterdnd2 |
-| Spracovanie PDF | pypdf |
-| Spracovanie DOCX | python-docx |
-| Excel export | openpyxl + pandas |
-| Štandard | AIAG/VDA FMEA (2019) |
+- **Python 3.10+** – jadro aplikácie
+- **Anthropic SDK** – komunikácia s Claude API
+- **CustomTkinter** – moderné GUI s tmavým režimom
+- **openpyxl + pandas** – generovanie a formátovanie Excelu
+- **pypdf, python-docx** – načítavanie dokumentov
+- **Pydantic** – typová validácia AI výstupu
 
 ---
 
-## Autor
+## Súlad s normami
 
-**Alexander** – Diplomová práca  
-Rok: 2026
+- **IEC 60812:2018** – Failure modes and effects analysis (FMEA and FMECA)
+- **AIAG/VDA 2019** – metodika klasifikácie špeciálnych charakteristík (CC, OS, SC, HI)
+
+Hodnoty S, O, D vychádzajú z príkladovej stupnice 1–10 uvedenej v informatívnej prílohe normy IEC 60812:2018, prispôsobenej pre procesnú FMEA v automotive odvetví podľa metodiky AIAG/VDA.
 
 ---
 
 ## Licencia
 
-Tento projekt je určený pre akademické účely v rámci diplomovej práce.
+Tento projekt je vytvorený v rámci diplomovej práce. Všetky práva vyhradené.
+
+## Autor
+
+**Alexander [Priezvisko]** – diplomová práca, [Univerzita / Fakulta], 2026

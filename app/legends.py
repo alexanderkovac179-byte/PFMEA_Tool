@@ -65,26 +65,71 @@ VYZNAM_LEGENDA = [
         "Bez rozpoznateľného následku pre proces, organizáciu alebo pracovníka.",
         1,
     ],
+    [
+        "Poznámka o norme",
+        "Hodnoty a kritériá Významu (Severity) v tejto legende vychádzajú z medzinárodnej normy "
+        "IEC 60812:2018 – Failure modes and effects analysis (FMEA and FMECA), príloha A. "
+        "Norma definuje rámec hodnotenia; presné kritériá sú prispôsobené pre procesnú FMEA "
+        "v automotive odvetví podľa metodiky AIAG & VDA (vydanie 2019).",
+        "—",
+        "—",
+    ],
 ]
 
 
 VYSKYT_LEGENDA = [
     [
-        "Pravdepodobnosť výskytu chyby",
-        "Možná početnosť chýb",
-        "Ppk (Cpk)",
+        "Pravdepodobnosť výskytu",
+        "Kritérium hodnotenia",
         "Hodnota indexu",
     ],
-    ["Veľmi vysoká: Chyba sa vyskytuje permanentne", "> 100 z 1000", "<0,55", 10],
-    ["Veľmi vysoká: Chyba sa vyskytuje permanentne", "50 z 1000", ">0,55", 9],
-    ["Vysoká: Opakovaný výskyt chyby", "20 z 1000", ">0,78", 8],
-    ["Vysoká: Opakovaný výskyt chyby", "10 z 1000", ">0,86", 7],
-    ["Priemerná: Občasný výskyt chyby", "5 z 1000", ">0,94", 6],
-    ["Priemerná: Občasný výskyt chyby", "2 z 1000", ">1,00", 5],
-    ["Priemerná: Občasný výskyt chyby", "1 z 1000", ">1,10", 4],
-    ["Nízka: Relatívne malý výskyt chyby", "0,5 z 1000", ">1,20", 3],
-    ["Nízka: Relatívne malý výskyt chyby", "0,1 z 1000", ">1,30", 2],
-    ["Nepatrná: Chyba je nepravdepodobná", "0,01 z 1000", ">1,67", 1],
+    [
+        "Veľmi vysoká",
+        "Veľmi vysoká pravdepodobnosť výskytu potenciálnej poruchy. "
+        "Chyba sa vyskytuje opakovane, často alebo permanentne. "
+        "Táto úroveň vyžaduje okamžité opatrenia v procese.",
+        "9 – 10",
+    ],
+    [
+        "Vysoká",
+        "Vysoká pravdepodobnosť výskytu potenciálnej poruchy. "
+        "Chyba sa prejavuje pravidelne a v procese je reálnym rizikom. "
+        "Vyžaduje zváženie preventívnych opatrení.",
+        "7 – 8",
+    ],
+    [
+        "Stredná",
+        "Stredná pravdepodobnosť výskytu potenciálnej poruchy. "
+        "Chyba sa môže vyskytnúť príležitostne, proces ju však do značnej miery zvláda.",
+        "5 – 6",
+    ],
+    [
+        "Nízka",
+        "Nízka pravdepodobnosť výskytu potenciálnej poruchy. "
+        "Chyba sa objavuje zriedka a proces je pomerne stabilný.",
+        "3 – 4",
+    ],
+    [
+        "Malá",
+        "Malá pravdepodobnosť výskytu potenciálnej poruchy. "
+        "Chyba je nepravdepodobná, proces je dobre riadený a stabilný.",
+        "1 – 2",
+    ],
+    [
+        "Poznámka",
+        "Táto časť je v postupe FMEA kľúčová – každá kategória s hodnotením "
+        "'veľmi vysoká' alebo 'vysoká' by sa mala zvážiť a riešiť prioritne. "
+        "Hodnotenia je možné definovať aj inak podľa metodiky firmy.",
+        "—",
+    ],
+    [
+        "Poznámka o norme",
+        "Hodnoty a kritériá Výskytu (Occurrence) v tejto legende vychádzajú z medzinárodnej "
+        "normy IEC 60812:2018 – Failure modes and effects analysis (FMEA and FMECA), príloha A. "
+        "Pri dostupnosti historických dát o nezhodách sa odporúča hodnoty výskytu kalibrovať "
+        "podľa skutočnej štatistiky procesu.",
+        "—",
+    ],
 ]
 
 
@@ -180,12 +225,128 @@ ODHALENIE_LEGENDA = [
         2,
     ],
     [
-        "Veľmi veľká možnosť",
-        "Väčšinou istota, že odhalí",
+        "Takmer istá detekcia",
+        "Chybe je zabránené konštrukciou",
         "X",
         "",
         "",
         "Chyba prakticky nemôže vzniknúť, pretože jej bráni konštrukcia riešenia, technické zabezpečenie alebo princíp poka-yoke.",
         1,
     ],
+    [
+        "Poznámka o norme",
+        "Hodnoty a kritériá Odhalenia (Detection) v tejto legende vychádzajú z medzinárodnej "
+        "normy IEC 60812:2018 – Failure modes and effects analysis (FMEA and FMECA), príloha A. "
+        "Norma uvádza odhalenie ako voliteľný parameter; v procesnej FMEA je jeho použitie bežnou "
+        "praxou pre výpočet RPN (Risk Priority Number = S × O × D).",
+        "—",
+        "—",
+        "—",
+        "—",
+        "—",
+    ],
 ]
+
+
+KLASIFIKACIA_LEGENDA = [
+    [
+        "Skratka",
+        "Kategória (Special Characteristic)",
+        "Kritérium FMEA",
+        "Popis charakteristiky",
+        "Požiadavky na riadenie / poznámka",
+    ],
+    [
+        "CC",
+        "Kritická (Critical Characteristic)",
+        "Význam (S) = 9 alebo 10",
+        "Parametre produktu alebo požiadavky, ktoré môžu ovplyvniť súlad so zákonnými reguláciami, bezpečnosť koncového používateľa alebo zákazníka, prípadne bezpečnú funkciu výrobku alebo poskytovanej služby.",
+        "Vyžaduje špeciálne opatrenia a riadenie, ktoré musia byť uvedené v Control Plane (Plán riadenia). Sledované so zvýšenou kontrolou.",
+    ],
+    [
+        "OS",
+        "Bezpečnosť operátora (Operator Safety)",
+        "Význam (S) = 9 alebo 10",
+        "Parametre, ktoré priamo neovplyvňujú produkt, ale môžu mať dopad na bezpečnosť operátora alebo súlad s predpismi BOZP, hygieny práce a ochrany zdravia pri práci. Predstavujú riziko pre pracovníkov v prevádzke.",
+        "Musia byť zahrnuté v bezpečnostnom podpísaní (safety signoff) a pracovnom postupe pre daný krok procesu.",
+    ],
+    [
+        "SC",
+        "Významná (Significant Characteristic)",
+        "Význam (S) = 5 – 8",
+        "Parametre produktu a požiadavky, ktoré sú dôležité pre spokojnosť zákazníka, ale nepredstavujú bezpečnostné riziko. Priorita opatrení sa stupňuje podľa hodnoty Výskytu (O).",
+        "Opatrenia plánovania kvality (Quality Planning) musia byť zdokumentované v Control Plane.",
+    ],
+    [
+        "HI",
+        "Vysoký dopad (High Impact Characteristic)",
+        "Význam (S) = 5 – 8",
+        "Parametre, ktoré pri prekročení tolerancie výrazne ovplyvnia priebeh procesu alebo nasledujúcich operácií (prestoje, prepracovanie, znížená efektivita). Priorita opatrení sa stupňuje podľa hodnoty Výskytu (O).",
+        "Sledované v rámci riadenia procesu; odporúča sa zaradiť do Control Planu pre daný krok alebo operáciu.",
+    ],
+    [
+        "Dôležité upozornenie",
+        "—",
+        "—",
+        "Klasifikácia špeciálnej charakteristiky sa priraďuje podľa hodnotení Význam (S) a Výskyt (O) daného riadku FMEA. "
+        "Klasifikácia vychádza z normy IEC 60812:2018 (Failure modes and effects analysis), "
+        "rozšírenej o automotive metodiku AIAG & VDA (vydanie 2019), ktorá zavádza špecifické "
+        "charakteristiky CC, OS, SC a HI.",
+        "Položky označené ako CC alebo OS musia byť povinne zahrnuté v Control Plane a safety signoff. Finálna klasifikácia musí byť schválená kvalifikovaným tímom FMEA.",
+    ],
+]
+
+
+ISTOTA_LEGENDA = [
+    [
+        "Úroveň istoty AI",
+        "Rozsah (%)",
+        "Farba",
+        "Interpretácia",
+        "Odporúčaná akcia",
+    ],
+    [
+        "Vysoká istota",
+        "75 % – 100 %",
+        "Zelená",
+        "Chyba, príčina alebo opatrenie sú explicitne doložené vo vstupných dokumentoch "
+        "(záznamy o nezhodách, kontrolný plán, pracovný postup). "
+        "AI vychádzala z konkrétnych a jednoznačných informácií.",
+        "Položku možno akceptovať po základnej odbornej kontrole. "
+        "Odporúča sa overiť relevantnosť v kontexte aktuálneho procesu.",
+    ],
+    [
+        "Stredná istota",
+        "50 % – 74 %",
+        "Žltá",
+        "Chyba alebo príčina sú odvoditeľné z kontextu dokumentov, ale nie sú explicitne pomenované. "
+        "AI vychádzala z nepriamych informácií alebo zo všeobecných znalostí daného typu operácie.",
+        "Položku je potrebné preskúmať odborníkom. "
+        "Overiť, či chyba, príčina a opatrenie zodpovedajú skutočnému stavu procesu. "
+        "Prípadne doplniť alebo upraviť pred finálnym schválením FMEA.",
+    ],
+    [
+        "Nízka istota",
+        "0 % – 49 %",
+        "Červená",
+        "Chyba alebo príčina sú generické a kontext dokumentov ich priamo nepodporuje. "
+        "AI nemala dostatok informácií a vygenerovala položku na základe všeobecných predpokladov "
+        "bez konkrétnej opory v podkladoch.",
+        "Položku je potrebné manuálne prehodnotiť alebo nahradiť. "
+        "Zvážiť doplnenie relevantnejších vstupných dokumentov (napr. záznamy o nezhodách, "
+        "FMEA z podobného procesu) a opätovné spustenie analýzy.",
+    ],
+    [
+        "Dôležité upozornenie",
+        "—",
+        "—",
+        "Hodnoty istoty AI sú orientačné. Vyjadrujú mieru opory vo vstupných dokumentoch, "
+        "nie absolútnu správnosť obsahu. Aj položka s vysokou istotou môže byť obsahovo nesprávna, "
+        "ak boli vstupné dokumenty nekvalitné alebo neaktuálne. "
+        "Hodnoty istoty AI nie sú súčasťou normy IEC 60812:2018 – ide o doplnkovú metriku "
+        "pre podporu odbornej kontroly automaticky generovaných položiek.",
+        "Finálne hodnoty S / O / D, klasifikáciu CC/SC a odporúčané opatrenia musí vždy "
+        "schváliť kvalifikovaný tím FMEA v súlade s normou IEC 60812:2018. "
+        "Tento dokument je AI-asistovaný NÁVRH, nie finálny auditovateľný záznam.",
+    ],
+] 
