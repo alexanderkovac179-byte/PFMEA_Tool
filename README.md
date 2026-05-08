@@ -162,11 +162,7 @@ Aplikácia automaticky analyzuje vstupné dokumenty (PDF, DOCX, XLSX, TXT, MD) a
 
 Hodnoty S, O, D vychádzajú z príkladovej stupnice 1–10 uvedenej v informatívnej prílohe normy IEC 60812:2018, prispôsobenej pre procesnú FMEA v automotive odvetví podľa metodiky AIAG/VDA.
 
----
-
-## Licencia
-
-Tento projekt je vytvorený v rámci diplomovej práce. Všetky práva vyhradené.
+--- 
 
 ## Autor
 
