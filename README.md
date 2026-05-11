@@ -1,12 +1,10 @@
 # PFMEA Tool
 
-**Desktopová aplikácia pre AI-asistované generovanie procesnej FMEA (Failure Mode and Effects Analysis) z technických dokumentov.**
+**Desktopová aplikácia pre AI-asistované generovanie procesnej FMEA (Failure Mode and Effects Analysis).**
 
-Aplikácia automaticky analyzuje vstupné dokumenty (PDF, DOCX, XLSX, TXT, MD) a pomocou modelu Claude Opus 4.7 vygeneruje návrh procesnej FMEA podľa metodiky **AIAG/VDA 2019** a normy **IEC 60812:2018**. Výstupom je formátovaný Excel súbor s hodnotami S, O, D, RPN a klasifikáciou špeciálnych charakteristík (CC, OS, SC, HI).
+Aplikácia automaticky analyzuje vstupné dokumenty (PDF, DOCX, XLSX, TXT, MD) a pomocou LLM modelu Claude Opus 4.7 vygeneruje návrh procesnej FMEA podľa metodiky **AIAG/VDA 2019** a normy **IEC 60812:2018**. Výstupom je formátovaný Excel súbor s hodnotami S, O, D, RPN a klasifikáciou špeciálnych charakteristík (CC, OS, SC, HI).
 
-> **Poznámka:** PFMEA Tool je AI-asistovaný nástroj na podporu tvorby FMEA dokumentácie. Výstup nie je finálnym auditovateľným záznamom a nenahrádza odbornú expertízu inžinierov kvality.
-
-Diplomová práca, 2026.
+> **Poznámka:** PFMEA Tool je AI-asistovaný nástroj na podporu tvorby FMEA dokumentácie. Výstup nie je finálnym auditovateľným záznamom a nenahrádza odbornú expertízu.
 
 ---
 
@@ -164,12 +162,8 @@ Diplomová práca, 2026.
 
 Hodnoty S, O, D vychádzajú z príkladovej stupnice 1–10 uvedenej v informatívnej prílohe normy IEC 60812:2018, prispôsobenej pre procesnú FMEA v automotive odvetví podľa metodiky AIAG/VDA.
 
----
-
-## Licencia
-
-Tento projekt je vytvorený v rámci diplomovej práce. Všetky práva vyhradené.
+--- 
 
 ## Autor
 
-**Alexander [Priezvisko]** – diplomová práca, [Univerzita / Fakulta], 2026
+**Alexander Miloslav Kováč** – diplomová práca, Žilinská univerzita v Žiline, 2026
