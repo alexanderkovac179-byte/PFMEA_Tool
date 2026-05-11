@@ -3,6 +3,116 @@
   "output_dir": "C:/Users/alexa/OneDrive/Počítač/vystupne_udaje",
   "runs": [
     {
+      "timestamp": "2026-05-08T12:48:22",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 48,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_12-48-22_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 196.5,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T12:27:15",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 45,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_12-27-15_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 187.3,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T12:22:11",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 48,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_12-22-11_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 200.3,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T12:13:48",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 48,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_12-13-48_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 201.4,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T12:04:54",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 42,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_12-04-54_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 174.5,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T11:09:26",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 45,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_11-09-26_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 199.7,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T11:00:51",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 45,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_11-00-51_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 193.5,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T10:51:45",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 48,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_10-51-45_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 195.1,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T10:47:38",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 48,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_10-47-37_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 209.0,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-05-08T10:42:11",
+      "process_name": "Montáž hriadeľového pohonu WA 500",
+      "item_count": 42,
+      "document_count": 5,
+      "output_file": "C:\\Users\\alexa\\OneDrive\\Počítač\\vystupne_udaje\\pfmea_montaz_hriadeloveho_pohonu_wa_500_2026-05.xlsx",
+      "log_file": "data\\logs\\log_2026-05-08_10-42-10_montaz_hriadeloveho_pohonu_wa_500.md",
+      "duration_sec": 198.5,
+      "model": "claude-opus-4-7",
+      "status": "success"
+    },
+    {
       "timestamp": "2026-05-03T12:59:21",
       "process_name": "Montáž hriadeľového pohonu WA 500",
       "item_count": 42,
